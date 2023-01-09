@@ -1,6 +1,6 @@
 export const List = ({ list, users }) => {
   return (
-    <table>
+    <table style={{ margin: 'auto' }}>
       <thead>
         <tr>
           <th>名称</th>
@@ -9,9 +9,9 @@ export const List = ({ list, users }) => {
       </thead>
       <tbody>
         {list.map((item) => (
-          <tr>
+          <tr key={item.id}>
             <td>{item.name}</td>
-            <td>{users.find(user => user.id === item.personId)?.name}</td>
+            <td>{users.find((user) => user.id === item.personId)?.name}</td>
           </tr>
         ))}
       </tbody>
