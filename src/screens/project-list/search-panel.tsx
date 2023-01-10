@@ -1,4 +1,17 @@
-export const SearchPanel = ({ users, param, setParam }) => {
+interface User {
+  id: string;
+  name: string;
+}
+interface SearchPanelParam {
+  users: User[];
+  param: {
+    name: string;
+    personId: string;
+  };
+  setParam: (param: SearchPanelParam['param']) => void;
+}
+
+export const SearchPanel = ({ users, param, setParam }: SearchPanelParam) => {
   return (
     <form>
       <input
@@ -22,7 +35,9 @@ export const SearchPanel = ({ users, param, setParam }) => {
       >
         <option value={''}>负责人</option>
         {users.map((i) => (
-          <option key={i.id} value={i.id}>{i.name}</option>
+          <option key={i.id} value={i.id}>
+            {i.name}
+          </option>
         ))}
       </select>
     </form>
